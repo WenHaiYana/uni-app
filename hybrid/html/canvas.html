@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Title</title>
+		<meta http-equiv="Content-Type" content="text/html,charset=UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<meta content="telephone=no" name="format-detection">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	</head>
+	<!-- 微信 JS-SDK 如果不需要兼容微信小程序，则无需引用此 JS 文件。 -->
+	<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+	<!-- 支付宝的 JS-SDK 防止 404 需要动态加载，如果不需要兼容支付宝小程序，则无需引用此 JS 文件。 -->
+	<script type="text/javascript">
+		if (navigator.userAgent.indexOf('AlipayClient') > -1) {
+			document.writeln('<script src="https://appx/web-view.min.js"' + '>' + '<' + '/' + 'script>');
+		}
+	</script>
+	<!-- uni 的 SDK -->
+	<script type="text/javascript" src="https://js.cdn.aliyun.dcloud.net.cn/dev/uni-app/uni.webview.1.5.1.js"></script>
+	<script type="text/javascript" src="./jquery.min.js"></script>
+	<!-- 引入样式 -->
+	<link rel="stylesheet" href="./cavans.css">
+
+	<!-- 轮播图 -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.js"></script>
+	<script type="text/javascript" src="./htmlToCanvas.js"></script>
+	<script type="text/javascript" src="./html2canvas.js"></script>
+	<script type="text/javascript" src="./uploadImage.js"></script>
+	<script type="text/javascript" src="./matrix.js"></script>
+
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		html,
+		body {
+			height: 100%;
+		}
+
+	
+		.swiper-slide{
+			width: 20px;
+		}
+	</style>
+
+	<body class="container">
+		<div class="img-box">
+			<div class="card-box">
+				<div class="default-box">
+					<div class="default-box-box">
+						<img class="default-img" src="./add_image.png" alt="">
+						<div class="default-text">上传图片</div>
+					</div>
+				</div>
+				<img src="./tm.png" class="up-img" id="upImg">
+				<input type="file" id="addImg" class="upImg-btn">
+			</div>
+			<canvas id="cas" style="display: none;" width="350px" height=""></canvas>
+		</div>
+
+		<div class="tab">
+			<div class="tab_1">
+				<div class="margin-left" onclick="changeTab($(this),0)" style="display: none;" data-type="0">商品效果图</div>
+				<div class="margin-left" onclick="changeTab($(this),1)">我的diy</div>
+				<div class="margin-left" onclick="changeTab($(this),2)">收藏的窗帘</div>
+			</div>
+			<div class="tab_2">
+				<div class="margin-right" onclick="clearImg()">清除图片</div>
+			</div>
+		</div>
+
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+			</div>
+			<!-- Add Pagination -->
+		</div>
+
+		<input type="file" id="addImg2" class="upImg-btn2" style="z-index:10;opacity: 0;">
+		<div class="upImg-btn2" style="z-index:1">上传图片</div>
+		<div class="bottom-buttom" onclick="imgSynthesis()">合成图片</div>
+		<!-- <button type="button" onclick="createImg()" id="test">dsaf </button> -->
+	</body>
+	<div class="layer" style="display: none;">
+		<img src="" />
+	</div>
+	<!-- <canvas id="test_cavas"></canvas> -->
+
+	<script>
+		document.addEventListener('UniAppJSBridgeReady', function() {
+			uni.postMessage({
+				data: {
+					action: 'message'
+				}
+			});
+			uni.getEnv(function(res) {
+				console.log('当前环境：' + JSON.stringify(res));
+			});
+
+			document.querySelector('.layer img').addEventListener('click', function(evt) {
+				var target = evt.target.tagName;
+				var imgUrl = document.querySelector('.layer img').src;
+				plus.gallery.save(
+					imgUrl,
+					function() {
+						console.log("保存图片到相册成功");
+						document.querySelector('.layer').style.display = 'none';
+					});
+			});
+		});
+		var url = 'https://sxclapp.jucheng01.net/applet.php/';
+		var userId = 0;
+		var productId = 0;
+		var type = 0;
+
+		function getQueryVariable(variable) {
+			var query = window.location.search.substring(1);
+			var vars = query.split("&");
+			for (var i = 0; i < vars.length; i++) {
+				var pair = vars[i].split("=");
+				if (pair[0] == variable) {
+					return pair[1];
+				}
+			}
+			return 0;
+		}
+		//页面加载后执行
+		!(function() {
+			$('#cas').attr('width', (parseFloat($(window).width()) - 60) + 'px')
+			var os = function() {
+				var ua = navigator.userAgent,
+					isWindowsPhone = /(?:Windows Phone)/.test(ua),
+					isSymbian = /(?:SymbianOS)/.test(ua) || isWindowsPhone,
+					isAndroid = /(?:Android)/.test(ua),
+					isFireFox = /(?:Firefox)/.test(ua),
+					isChrome = /(?:Chrome|CriOS)/.test(ua),
+					isTablet = /(?:iPad|PlayBook)/.test(ua) || (isAndroid && !/(?:Mobile)/.test(ua)) || (isFireFox && /(?:Tablet)/.test(
+						ua)),
+					isPhone = /(?:iPhone)/.test(ua) && !isTablet,
+					isPc = !isPhone && !isAndroid && !isSymbian;
+				return {
+					isTablet: isTablet,
+					isPhone: isPhone,
+					isAndroid: isAndroid,
+					isPc: isPc
+				};
+			}();
+			if (os.isAndroid || os.isPhone) {
+				
+				// 手机
+				$('.swiper-container').addClass('margin-bottom');
+				$('#cas').attr('height', '320px')
+				// $('.card-box').attr('height', '320px');
+				$('.card-box').css('height', '320px');
+
+			} else if (os.isTablet) {
+				// 平板
+				$('#cas').attr('height', '500px')
+				$('.card-box').css('height', '500px');
+
+			} else if (os.isPc) {
+				// pc
+			}
+			//获取url传参
+			productId = getQueryVariable('product_id');
+			if (productId == 0) {
+				type = 1;
+				$('.tab_1').find('div').eq(1).addClass('on');
+			} else {
+				$('.tab_1').find('div').eq(0).show();
+				$('.tab_1').find('div').eq(0).addClass('on');
+			}
+			userId = getQueryVariable('user_id');
+			//图片上传初始化
+			imageUpload.init('addImg', 'upImg', function() {});
+
+			//异步获取数据
+			var data = 'user_id=' + userId + '&product_id=' + productId + '&type=' + type;
+			$.post(url + 'Mall/getProductDiy', data, function(res) {
+				var html = '';
+				for (var i in res.data) {
+					html += '<div class="swiper-slide"><image src=' + res.data[i] + '></div>'
+				}
+				$('.swiper-wrapper').html(html);
+				var swiper = new Swiper('.swiper-container', {
+					slidesPerView: 3,
+					spaceBetween: 10,
+				});
+			})
+
+			$(document).on('click', '.swiper-slide img', function(res) {
+				if ($('.default-box').is(':hidden') === false) {
+					alert('请先上传图片');
+					return false;
+				}
+				$('#cas').show();
+				var c = document.getElementById("cas");
+				var ctx = c.getContext("2d");
+				ctx.clearRect(0, 0, c.width, c.height);
+				matrix.init($(this).attr('src'), 'cas')
+			})
+
+			//图片上传初始化
+			imageUpload.init('addImg2', 'addImg2', function(result) {
+				if ($('.default-box').is(':hidden') === false) {
+					alert('请先上传图片');
+					return false;
+				}
+				$('#cas').show();
+				var c = document.getElementById("cas");
+				var ctx = c.getContext("2d");
+				ctx.clearRect(0, 0, c.width, c.height);
+				matrix.init(result, 'cas');
+			})
+
+			$(document).on('click', '.layer img', function() {
+
+			})
+		})();
+
+		function changeTab(that, type) {
+			var data = 'user_id=' + userId + '&product_id=' + productId + '&type=' + type;
+			$.post(url + 'Mall/getProductDiy', data, function(res) {
+				var html = '';
+				for (var i in res.data) {
+					html += '<div class="swiper-slide"><image src=' + res.data[i] + '></div>'
+				}
+				$('.swiper-wrapper').html(html);
+				that.parent().find('div').removeClass('on');
+				that.addClass('on');
+				var swiper = new Swiper('.swiper-container', {
+					slidesPerView: 3,
+					spaceBetween: 10,
+				});
+			})
+		}
+
+		function clearImg() {
+			$('#upImg').attr('src', '')
+			$('.default-box').show();
+			var c = document.getElementById("cas");
+			var ctx = c.getContext("2d");
+			ctx.clearRect(0, 0, c.width, c.height);
+			$('#cas').hide();
+		}
+		/**
+		 * 合成图片
+		 */
+		function imgSynthesis() {
+			if ($('.default-box').is(':hidden') === false) {
+				alert('请先上传图片');
+				return false;
+			}
+			if ($('#cas').is(':hidden') === true) {
+				alert('请选择窗帘');
+				return false;
+			}
+			htmlToCanvas.init('.img-box', function(result) {
+				// $.post(url + 'Mall/saveFilebase64', 'image_url=' + result.src, function(res) {
+				// 	console.log(res);
+				// });
+				var imgFile = dataURLtoFile(result.src, "img.png");
+				var xhr = new XMLHttpRequest();
+				var fd = new FormData();
+				xhr.open('POST', url + 'Basic/saveFile');
+				fd.append("file", imgFile);
+				xhr.send(fd);
+				xhr.onreadystatechange = function() {
+					if (xhr.readyState == 4 && xhr.status == 200) {
+						var responseText = JSON.parse(xhr.responseText); //返回结果
+						var url = responseText.data.url;
+						console.log(responseText);
+						$('.layer').show();
+						$('.layer').find('img').attr('style', 'width:' + result.width + 'px;height:' + result.height + 'px')
+						$('.layer').find('img').attr('src', url)
+					}
+				};
+				alert('上传成功，请点击图片进行保存本地');
+// 				console.log('上传json！')
+// 
+			})
+		}
+
+		function dataURLtoFile(dataurl, filename) {
+			console.log("转文件");
+			var arr = dataurl.split(','),
+				mime = arr[0].match(/:(.*?);/)[1],
+				bstr = atob(arr[1]),
+				n = bstr.length,
+				u8arr = new Uint8Array(n);
+			while (n--) {
+				u8arr[n] = bstr.charCodeAt(n);
+			}
+			return new File([u8arr], filename, {
+				type: mime
+			});
+		}
+	</script>
+</html>

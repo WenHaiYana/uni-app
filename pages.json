@@ -1,0 +1,511 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/app/mine/start",
+			"style": {
+				"navigationBarTitleText": "窗帘定制",
+				"navigationStyle":"custom",
+				"app-plus": {
+					"titleNView":false
+				}
+			}
+		},
+		{
+			"path": "pages/webView",
+			"style": {
+				"navigationBarTitleText": "新页面1111",
+				"navigationStyle":"custom",
+				"app-plus": {
+					 "titleNView":false
+					}
+			}
+		},
+		// {
+		// 	"path": "pages/app/account/customization",
+		// 	"style": {
+		// 		"navigationBarTitleText": "窗帘定制",
+		// 		"app-plus": {
+		// 			"bounce":"none"
+		// 		}
+		// 		
+		// 	}
+		// },
+		//ipad的路由
+		{
+			"path": "pages/ipad/mall/index",
+			"style": {
+				"navigationBarTitleText": "首页",
+				"navigationStyle":"custom",
+				"app-plus": {
+					"titleNView":false
+				}
+			}
+		},
+		{
+			"path": "pages/ipad/account/customization",
+			"style": {
+				"navigationBarTitleText": "窗帘定制"
+				
+			}
+		},
+		{
+			"path": "pages/ipad/mall/sort",
+			"style": {
+				"navigationBarTitleText": "产品",
+				"navigationStyle":"custom",
+				"app-plus": {
+					"titleNView":false
+				}
+			}
+		},
+		{
+			"path": "pages/ipad/mall/list",
+			"style": {
+				"navigationBarTitleText": "列表",
+				"navigationStyle":"custom",
+				"app-plus": {
+					"titleNView":false
+				}
+			}
+		},
+		{
+			"path": "pages/ipad/mall/detaile",
+			"style": {
+				"navigationBarTitleText": "详情",
+				"navigationStyle":"custom",
+				"app-plus": {
+					"titleNView":false
+				}
+			}
+		},
+		{
+			"path": "pages/ipad/mall/search",
+			"style": {
+				"navigationBarTitleText": "搜索",
+				"navigationStyle":"custom",
+				"app-plus": {
+					"titleNView":false
+				}
+			}
+		},
+		{
+			"path": "pages/ipad/mall/cart",
+			"style": {
+				"navigationBarTitleText": "购物车",
+				"navigationStyle":"custom",
+				"app-plus": {
+					"titleNView":false
+				}
+			}
+		},
+		{
+			"path": "pages/ipad/mall/placeOrder",
+			"style": {
+				"navigationBarTitleText": "下单",
+				"navigationStyle":"custom",
+				"app-plus": {
+					"titleNView":false
+				}
+			}
+		},
+		{
+			"path": "pages/ipad/mall/orderDateile",
+			"style": {
+				"navigationBarTitleText": "订单详情",
+				"navigationStyle":"custom",
+				"app-plus": {
+					"titleNView":false
+				}
+			}
+		},
+		{
+			"path": "pages/ipad/address/index",
+			"style": {
+				"navigationBarTitleText": "编辑地址",
+				"navigationStyle":"custom",
+				"app-plus": {
+					"titleNView":false
+				}
+			}
+		},
+		{
+			"path": "pages/ipad/mall/myOrder",
+			"style": {
+				"navigationBarTitleText": "我的订单",
+				"navigationStyle":"custom",
+				"app-plus": {
+					"titleNView":false
+				}
+			}
+		},
+		{
+			"path": "pages/ipad/mine/personal",
+			"style": {
+				"navigationBarTitleText": "我的",
+				"navigationStyle":"custom",
+				"app-plus": {
+					"titleNView":false
+				}
+			}
+		},
+		{
+			"path": "pages/ipad/mall/myCurtain",
+			"style": {
+				"navigationBarTitleText": "我的DIY窗帘",
+				"navigationStyle":"custom",
+				"app-plus": {
+					"titleNView":false
+				}
+			}
+		},
+		{
+			"path": "pages/ipad/mall/personality",
+			"style": {
+				"navigationBarTitleText": "个性DIY",
+				"navigationStyle":"custom",
+				"app-plus": {
+					"titleNView":false
+				}
+			}
+		},
+		{
+			"path": "pages/ipad/account/modifyDiscount",
+			"style": {
+				"navigationBarTitleText": "修改折扣"
+			}
+		},
+		{
+			"path": "pages/ipad/account/modifyPay",
+			"style": {
+				"navigationBarTitleText": "修改已支付",
+				"navigationStyle":"custom",
+				"app-plus": {
+					"titleNView":false
+				}
+			}
+		},
+		{
+			"path": "pages/ipad/mall/myCollect",
+			"style": {
+				"navigationBarTitleText": "我的收藏",
+				"navigationStyle":"custom",
+				"app-plus": {
+					"titleNView":false
+				}
+			}
+		},
+		{
+			"path": "pages/ipad/account/verifyPassword",
+			"style": {
+				"navigationBarTitleText": "验证密码",
+				"navigationStyle":"custom",
+				"app-plus": {
+					"titleNView":false
+				}
+			}
+		},
+		{
+			"path": "pages/ipad/account/preferential",
+			"style": {
+				"navigationBarTitleText": "优惠"
+			}
+		},
+		
+		{
+			"path": "pages/ipad/account/share",
+			"style": {
+				"navigationBarTitleText": "分享",
+				"navigationStyle":"custom",
+				"app-plus": {
+					"titleNView":false
+				}
+			}
+		},
+		{
+			"path": "pages/ipad/mine/login",
+			"style": {
+				"navigationBarTitleText": "登录",
+				"navigationStyle":"custom",
+				"app-plus": {
+					"titleNView":false
+				}
+			}
+		},
+		
+		{
+			"path": "pages/app/mall/index",
+			"style": {
+				"navigationBarTitleText": "首页",
+				// "navigationStyle":"custom",
+				"enablePullDownRefresh": false,
+				"app-plus": {
+					"titleNView":false
+				}
+			}
+		},
+		{
+			"path": "pages/app/mall/sort",
+			"style": {
+				"navigationBarTitleText": "分类"
+			}
+		},
+		{
+			"path": "pages/app/mall/placeOrder",
+			"style": {
+				"navigationBarTitleText": "下单"
+			}
+		},
+		{
+			"path": "pages/app/mall/myCollect",
+			"style": {
+				"navigationBarTitleText": "我的收藏",
+				"navigationStyle":"custom",
+				"app-plus": {
+					"titleNView":false
+				}
+			}
+		},
+		{
+			"path": "pages/app/account/supernatant",
+			"style": {
+				"navigationBarTitleText": "浮层提示",
+				"navigationStyle":"custom",
+				"app-plus": {
+					"titleNView":false
+				}
+			}
+		},
+		{
+			"path": "pages/app/mall/personality",
+			"style": {
+				"navigationBarTitleText": "个性DIY"
+			}
+		},
+		{
+			"path": "pages/app/account/shopCollection",
+			"style": {
+				"navigationBarTitleText": "商家收款码",
+				"navigationStyle":"custom",
+				"app-plus": {
+					"titleNView":false
+				}
+			}
+		},
+		{
+			"path": "pages/app/account/myCollection",
+			"style": {
+				"navigationBarTitleText": "我的收款码",
+				"navigationStyle":"custom",
+				"app-plus": {
+					"titleNView":false
+				}
+			}
+		},
+		{
+			"path": "pages/ipad/account/myCollection",
+			"style": {
+				"navigationBarTitleText": "我的收款码",
+				"navigationStyle":"custom",
+				"app-plus": {
+					"titleNView":false
+				}
+			}
+		},
+		{
+			"path": "pages/app/mall/myCurtain",
+			"style": {
+				"navigationBarTitleText": "我的DIY窗帘",
+				"navigationStyle":"custom",
+				"app-plus": {
+					"titleNView":false
+				}
+			}
+		},
+		{
+			"path": "pages/app/account/modifyDiscount",
+			"style": {
+				"navigationBarTitleText": "修改折扣"
+			}
+		},
+		{
+			"path": "pages/app/account/modifyPay",
+			"style": {
+				"navigationBarTitleText": "修改已支付"
+			}
+		},
+		{
+			"path": "pages/app/account/preferential",
+			"style": {
+				"navigationBarTitleText": "优惠"
+			}
+		},
+		
+		{
+			"path": "pages/app/mine/forgotPassword",
+			"style": {
+				"navigationBarTitleText": "我的页面",
+				"navigationStyle":"custom",
+				"app-plus": {
+					"titleNView":false
+				}
+			}
+		},
+		{
+			"path": "pages/app/mine/login",
+			"style": {
+				"navigationBarTitleText": "登录",
+				"navigationStyle":"custom",
+				"app-plus": {
+					"titleNView":false
+				}
+			}
+		},
+		{
+			"path": "pages/app/mall/myOrder",
+			"style": {
+				"navigationBarTitleText": "我的订单",
+				"navigationStyle":"custom",
+				"app-plus": {
+					"titleNView":false
+				}
+			}
+		},
+		{
+			"path": "pages/app/mall/orderDataile",
+			"style": {
+				"navigationBarTitleText": "订单详情"
+			}
+		},
+		{
+			"path": "pages/app/address/index",
+			"style": {
+				"navigationBarTitleText": "编辑地址"
+			}
+		},
+		
+		{
+			"path": "pages/app/mall/search",
+			"style": {
+				"navigationBarTitleText": "搜索",
+				"app-plus": {
+					"titleNView":false
+				}
+			}
+		},
+		
+		{
+			"path": "pages/app/mall/list",
+			"style": {
+				"navigationBarTitleText": "商品列表"
+			}
+		},
+		{
+			"path": "pages/app/account/verifyPassword",
+			"style": {
+				"navigationBarTitleText": "验证密码",
+				"navigationStyle":"custom",
+				"app-plus": {
+					"titleNView":false
+				}
+			}
+		},
+		{
+			"path": "pages/app/mall/detail",
+			"style": {
+				"navigationBarTitleText": "商品详情",
+				"app-plus": {
+					
+				}
+			}
+		},
+		{
+			"path": "pages/app/mine/personal",
+			"style": {
+				"navigationBarTitleText": "验证密码",
+				"navigationStyle":"custom",
+				"app-plus": {
+					"titleNView":false
+				}
+			}
+		},
+		{
+		  "path": "pages/app/webView",
+		  "style": {
+		    "navigationBarTitleText": "新页面",
+		    "navigationBarBackgroundColor": "#fff",
+			"app-plus": {
+				"titleNView":false
+			}
+		  }
+		},
+		{
+			"path": "pages/app/mall/cart",
+			"style": {
+				"navigationBarTitleText": "购物车",
+				"navigationStyle":"custom",
+				"app-plus": {
+					"titleNView":false
+				}
+			}
+		},
+		{
+			"path": "pages/app/account/share",
+			"style": {
+				"navigationBarTitleText": "分享",
+				"navigationStyle":"custom",
+				"app-plus": {
+					"titleNView":false
+				}
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#989898",
+		"selectedColor": "#2E2E2E",
+		"borderStyle": "white",
+		"list": [
+			{
+				"pagePath": "pages/app/mall/index",
+				"iconPath": "static/images/home1.png",
+				"selectedIconPath": "static/images/home.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/app/mall/sort",
+				"iconPath": "static/images/sort1.png",
+				"selectedIconPath": "static/images/sort.png",
+				"text": "产品"
+			},
+			{
+				"pagePath": "pages/app/mall/cart",
+				"iconPath": "static/images/cart1.png",
+				"selectedIconPath": "static/images/cart.png",
+				"text": "购物车"
+			},
+			{
+				"pagePath": "pages/app/mine/personal",
+				"iconPath": "static/images/me1.png",
+				"selectedIconPath": "static/images/me.png",
+				"text": "我的"
+			}
+		]
+	},
+	"condition": {
+		"current": 0,
+		"list": [
+			{
+				"name": "",
+				"path": "",
+				"query": ""
+			}
+		]
+	}
+	
+}
+ 
